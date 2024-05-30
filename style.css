@@ -126,6 +126,7 @@ a::after {
 @media (max-width: 600px) {
   body {
     font-size: 1rem; /* Уменьшить размер шрифта на мобильных устройствах */
+    margin-left: -2px;
   }
 
   .terminal {

@@ -51,8 +51,8 @@ body {
   height: 100%;
   background-image: linear-gradient(0deg, transparent 0%, rgba(32, 128, 32, 0.2) 2%, rgba(32, 128, 32, 0.8) 3%, rgba(32, 128, 32, 0.2) 3%, transparent 100%);
   background-repeat: no-repeat;
-  -webkit-animation: scan 4.5s linear 0s infinite;
-          animation: scan 4.5s linear 0s infinite;
+  -webkit-animation: scan 7.5s linear 0s infinite;
+          animation: scan 7.5s linear 0s infinite;
 }
 
 @-webkit-keyframes scan {
@@ -80,7 +80,7 @@ body {
   width: 1000px;
   max-width: 100%;
   padding: 4rem;
-  /* text-transform: uppercase; Убрали это свойство */
+  text-transform: uppercase;
 }
 
 .output {
@@ -104,7 +104,6 @@ body {
   content: "$ ";
 }
 */
-
 a {
   color: #fff;
   text-decoration: none;
@@ -120,4 +119,15 @@ a::after {
 
 .errorcode {
   color: white;
+}
+
+/* Медиа-запрос для мобильных устройств */
+@media (max-width: 600px) {
+  body {
+    font-size: 1rem; /* Уменьшить размер шрифта на мобильных устройствах */
+  }
+
+  .terminal {
+    padding: 1rem; /* Уменьшить отступы на мобильных устройствах */
+  }
 }

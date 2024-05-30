@@ -1,60 +1,123 @@
-:root {
-
-
-  --background: rgb(20,20,20);
-
-	--black: rgb(20,20,20);
-	--dark-gray: rgb(75,75,75);
-	--light-gray: rgb(185,185,185);
-	--white: rgb(240,240,240);
-
+@import 'https://fonts.googleapis.com/css?family=Inconsolata';
+html {
+  min-height: 100%;
 }
 
 body {
-	background: var(--background);
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: 100% 100%;
-
-	font-size: 100%;
-	color: var(--white);
-  text-align: center;
+  box-sizing: border-box;
+  height: 100%;
+  background-color: #000000;
+  background-image: radial-gradient(#11581E, #041607), url("https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Inconsolata", Helvetica, sans-serif;
+  font-size: 1.5rem;
+  color: rgba(128, 255, 128, 0.8);
+  text-shadow: 0 0 1ex #33ff33, 0 0 2px rgba(255, 255, 255, 0.8);
 }
 
-p {
-  margin: 20px auto 0;
-  padding: 15px 10px;
-  max-width: 720px;
-  font-size: 80%;
-  text-align: left;
-  color: rgb(20, 20, 20);
-  border: 1px solid rgb(20, 20, 20);
-  border-width: 1px 0 0 0;
-  line-height: 1.6;
+.noise {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+  opacity: 0.02;
 }
 
-v-select span[slot="no-options"] {
-  font-size: 0.8rem;
-}
-button#nmode {
-  padding: 5px 10px;
-  font-size: 15px;
+.overlay {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(180deg, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0) 100%);
+  background-size: auto 4px;
+  z-index: 1;
 }
 
-.link-button {
-  display: inline-block;
-  padding: 7px 14px;
-  font-size: 18px;
-  border: 1px solid rgb(20, 20, 20);
-  background-color: transparent;
-  color: rgb(20, 20, 20);
+.overlay::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(0deg, transparent 0%, rgba(32, 128, 32, 0.2) 2%, rgba(32, 128, 32, 0.8) 3%, rgba(32, 128, 32, 0.2) 3%, transparent 100%);
+  background-repeat: no-repeat;
+  -webkit-animation: scan 4.5s linear 0s infinite;
+          animation: scan 4.5s linear 0s infinite;
+}
+
+@-webkit-keyframes scan {
+  0% {
+    background-position: 0 -100vh;
+  }
+  35%, 100% {
+    background-position: 0 100vh;
+  }
+}
+
+@keyframes scan {
+  0% {
+    background-position: 0 -100vh;
+  }
+  35%, 100% {
+    background-position: 0 100vh;
+  }
+}
+
+.terminal {
+  box-sizing: inherit;
+  position: absolute;
+  height: 100%;
+  width: 1000px;
+  max-width: 100%;
+  padding: 4rem;
+  /* text-transform: uppercase; Убрали это свойство */
+}
+
+.output {
+  color: rgba(128, 255, 128, 0.8);
+  text-shadow: 0 0 1px rgba(51, 255, 51, 0.4), 0 0 2px rgba(255, 255, 255, 0.8);
+}
+
+.output::before {
+  content: "> ";
+}
+
+/*
+.input {
+  color: rgba(192, 255, 192, 0.8);
+  text-shadow:
+      0 0 1px rgba(51, 255, 51, 0.4),
+      0 0 2px rgba(255, 255, 255, 0.8);
+}
+
+.input::before {
+  content: "$ ";
+}
+*/
+
+a {
+  color: #fff;
   text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-  border-radius: 4px;
 }
 
-.link-button:hover {
-  background-color: rgb(245, 245, 245);
-  color: rgb(20, 20, 20);
+a::before {
+  content: "[";
+}
+
+a::after {
+  content: "]";
+}
+
+.errorcode {
+  color: white;
 }
